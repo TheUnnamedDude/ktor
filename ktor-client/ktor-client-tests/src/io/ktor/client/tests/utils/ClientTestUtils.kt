@@ -2,6 +2,7 @@ package io.ktor.client.tests.utils
 
 import io.ktor.client.*
 import io.ktor.client.engine.*
+import io.ktor.compat.*
 import kotlinx.coroutines.experimental.*
 
 fun <T : HttpClientEngineConfig> clientTest(
@@ -16,11 +17,11 @@ fun <T : HttpClientEngineConfig> clientTest(
 }
 
 class TestClientBuilder(
-    var config: suspend HttpClientConfig.() -> Unit = {},
+    var config: HttpClientConfig.() -> Unit = {},
     var test: suspend (HttpClient) -> Unit = {}
 )
 
-fun TestClientBuilder.config(block: suspend HttpClientConfig.() -> Unit): Unit {
+fun TestClientBuilder.config(block: HttpClientConfig.() -> Unit): Unit {
     config = block
 }
 

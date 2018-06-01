@@ -62,7 +62,7 @@ internal class TLSClientHandshake(
                     val recordIv = rawPacket.readLong()
                     val cipher = decryptCipher(
                         serverHello.cipherSuite,
-                        key, record.type, packetSize, recordIv, packetCounter++
+                        key, record.type, packetSize.toInt(), recordIv, packetCounter++
                     )
 
                     rawPacket.decrypted(cipher)
@@ -107,7 +107,7 @@ internal class TLSClientHandshake(
             val record = if (useCipher) {
                 val cipher = encryptCipher(
                     serverHello.cipherSuite,
-                    key, rawRecord.type, rawRecord.packet.remaining, packetCounter, packetCounter
+                    key, rawRecord.type, rawRecord.packet.remaining.toInt(), packetCounter, packetCounter
                 )
 
                 val packet = rawRecord.packet.encrypted(cipher, packetCounter)
@@ -232,7 +232,7 @@ internal class TLSClientHandshake(
                 }
                 TLSHandshakeType.CertificateRequest -> {
                     certificateRequested = true
-                    check(packet.remaining == 0)
+                    check(packet.remaining == 0L)
                 }
                 TLSHandshakeType.ServerKeyExchange -> {
                     when (exchangeType) {
@@ -393,7 +393,7 @@ internal class TLSClientHandshake(
         val handshakeBody = buildPacket(block = block)
 
         val recordBody = buildPacket {
-            writeTLSHandshakeType(handshakeType, handshakeBody.remaining)
+            writeTLSHandshakeType(handshakeType, handshakeBody.remaining.toInt())
             writePacket(handshakeBody)
         }
 

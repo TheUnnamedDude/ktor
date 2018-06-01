@@ -1,12 +1,13 @@
 package io.ktor.server.testing
 
 import io.ktor.application.*
-import io.ktor.content.*
+import io.ktor.http.content.*
 import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.server.engine.*
 import io.ktor.util.*
 import kotlinx.coroutines.experimental.io.*
+import kotlinx.coroutines.experimental.io.ByteReadChannel.*
 
 class TestApplicationRequest(
         call: ApplicationCall,
@@ -40,7 +41,7 @@ class TestApplicationRequest(
     }
 
     @Volatile
-    var bodyChannel: ByteReadChannel = EmptyByteReadChannel
+    var bodyChannel: ByteReadChannel = ByteReadChannel.Empty
 
     @Deprecated("Use setBody() method instead", ReplaceWith("setBody()"))
     var bodyBytes: ByteArray
@@ -82,9 +83,6 @@ class TestApplicationRequest(
     }
 
     override fun receiveChannel(): ByteReadChannel = bodyChannel
-
-    @Deprecated(message = "TestApplicationEngine no longer supports IncomingContent", level = DeprecationLevel.ERROR)
-    override fun receiveContent(): @Suppress("DEPRECATION") IncomingContent = error("TestApplicationEngine no longer supports IncomingContent")
 }
 
 fun TestApplicationRequest.setBody(value: String) {
