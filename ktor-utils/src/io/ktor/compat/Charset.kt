@@ -2,7 +2,6 @@ package io.ktor.compat
 
 import kotlinx.io.charsets.*
 
-
 expect fun Char.isLowerCase(): Boolean
 
 expect fun String.toCharArray(): CharArray

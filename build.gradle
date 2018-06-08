@@ -47,7 +47,7 @@ ext.publishLocal = project.hasProperty('publishLocal')
 
 def platformOf(Project project) {
     def commonModules = ['ktor-client-core', 'ktor-utils', 'ktor-http']
-    def nativeModules = ['ktor-client-ios']
+    def nativeModules = ['ktor-client-ios', 'ktor-http-ios', 'ktor-utils-ios']
 
     if (project.name in commonModules) return 'common'
     if (project.name in nativeModules) return 'native'

@@ -3,6 +3,11 @@ konan.targets = ["ios_arm64", "ios_x64"]
 konanArtifacts {
     library('ktor_client_ios') {
         enableMultiplatform true
+
+        libraries {
+            artifact project(':ktor-http:ktor-http-ios'), 'ktor_http_ios'
+            artifact project(':ktor-utils:ktor-utils-ios'), 'ktor_utils_ios'
+        }
     }
 }
 

@@ -9,3 +9,10 @@ apply plugin: 'konan'
 //
 //
 //task test(dependsOn: run)
+
+
+repositories {
+    maven {
+        url = 'https://dl.bintray.com/e5l/http-client-common'
+    }
+}

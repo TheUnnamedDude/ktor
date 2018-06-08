@@ -40,11 +40,13 @@ include ':ktor-features:ktor-auth-jwt'
 include ':ktor-features'
 include ':ktor-http'
 include ':ktor-http:ktor-http-jvm'
+include ':ktor-http:ktor-http-ios'
 include ':ktor-http:ktor-http-cio'
 include ':ktor-utils'
 include ':ktor-network'
 include ':ktor-network:ktor-network-tls'
 include ':ktor-utils:ktor-utils-jvm'
+include ':ktor-utils:ktor-utils-ios'
 
 project(':ktor-server').projectDir = "$rootDir/ktor-server" as File
 project(':ktor-server:ktor-server-core').projectDir = "$rootDir/ktor-server/ktor-server-core" as File
@@ -85,8 +87,10 @@ project(':ktor-features:ktor-auth-ldap').projectDir = "$rootDir/ktor-features/kt
 project(':ktor-features:ktor-auth-jwt').projectDir = "$rootDir/ktor-features/ktor-auth-jwt" as File
 project(':ktor-http').projectDir = "$rootDir/ktor-http" as File
 project(':ktor-http:ktor-http-jvm').projectDir = "$rootDir/ktor-http/ktor-http-jvm" as File
+project(':ktor-http:ktor-http-ios').projectDir = "$rootDir/ktor-http/ktor-http-ios" as File
 project(':ktor-http:ktor-http-cio').projectDir = "$rootDir/ktor-http/ktor-http-cio" as File
 project(':ktor-network').projectDir = "$rootDir/ktor-network" as File
 project(':ktor-network:ktor-network-tls').projectDir = "$rootDir/ktor-network/ktor-network-tls" as File
 project(':ktor-utils').projectDir = "$rootDir/ktor-utils" as File
 project(':ktor-utils:ktor-utils-jvm').projectDir = "$rootDir/ktor-utils/ktor-utils-jvm" as File
+project(':ktor-utils:ktor-utils-ios').projectDir = "$rootDir/ktor-utils/ktor-utils-ios" as File
