@@ -1,0 +1,11 @@
+konan.targets = ["ios_arm64", "ios_x64"]
+
+konanArtifacts {
+    library('ktor_client_ios') {
+        enableMultiplatform true
+    }
+}
+
+dependencies {
+    expectedBy project(':ktor-client:ktor-client-core')
+}

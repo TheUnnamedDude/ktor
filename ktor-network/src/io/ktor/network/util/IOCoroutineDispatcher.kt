@@ -1,13 +1,12 @@
 package io.ktor.network.util
 
+import io.ktor.compat.Closeable
 import kotlinx.coroutines.experimental.*
 import kotlinx.coroutines.experimental.internal.*
-import kotlin.coroutines.experimental.intrinsics.*
-import java.io.Closeable
 import java.util.concurrent.*
 import java.util.concurrent.atomic.*
 import kotlin.coroutines.experimental.*
-import kotlin.jvm.*
+import kotlin.coroutines.experimental.intrinsics.*
 
 class IOCoroutineDispatcher(private val nThreads: Int) : CoroutineDispatcher(), Closeable {
     private val dispatcherThreadGroup = ThreadGroup(ioThreadGroup, "io-pool-group-sub")

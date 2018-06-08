@@ -1,4 +1,6 @@
 rootProject.name = 'ktor'
+enableFeaturePreview('GRADLE_METADATA')
+
 include ':ktor-server:ktor-server-core'
 include ':ktor-server:ktor-server-tests'
 include ':ktor-server:ktor-server-host-common'
@@ -15,6 +17,7 @@ include ':ktor-client:ktor-client-core'
 include ':ktor-client:ktor-client-core:ktor-client-core-jvm'
 include ':ktor-client:ktor-client-tests'
 include ':ktor-client:ktor-client-apache'
+include ':ktor-client:ktor-client-ios'
 include ':ktor-client:ktor-client-android'
 include ':ktor-client:ktor-client-cio'
 include ':ktor-client:ktor-client-jetty'
@@ -60,6 +63,7 @@ project(':ktor-client:ktor-client-core:ktor-client-core-jvm').projectDir = "$roo
 project(':ktor-client:ktor-client-tests').projectDir = "$rootDir/ktor-client/ktor-client-tests" as File
 project(':ktor-client:ktor-client-apache').projectDir = "$rootDir/ktor-client/ktor-client-apache" as File
 project(':ktor-client:ktor-client-android').projectDir = "$rootDir/ktor-client/ktor-client-android" as File
+project(':ktor-client:ktor-client-ios').projectDir = "$rootDir/ktor-client/ktor-client-ios" as File
 project(':ktor-client:ktor-client-cio').projectDir = "$rootDir/ktor-client/ktor-client-cio" as File
 project(':ktor-client:ktor-client-jetty').projectDir = "$rootDir/ktor-client/ktor-client-jetty" as File
 project(':ktor-client:ktor-client-features').projectDir = "$rootDir/ktor-client/ktor-client-features" as File

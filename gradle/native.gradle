@@ -1,0 +1,11 @@
+
+apply plugin: 'konan'
+
+//afterEvaluate {
+//    apply from: rootProject.file('gradle/publish.gradle')
+//}
+//
+//apply from: rootProject.file('gradle/bintray.gradle')
+//
+//
+//task test(dependsOn: run)
