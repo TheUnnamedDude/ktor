@@ -55,11 +55,12 @@ def platformOf(Project project) {
 }
 
 allprojects {
+    def platform = platformOf(project)
+
     group = 'io.ktor'
     version = configuredVersion
 
-    def platform = platformOf(project)
-
+    apply from: rootProject.file("gradle/${platform}.gradle")
 
     repositories {
 //        mavenLocal()
@@ -79,8 +80,6 @@ allprojects {
             maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
         }
     }
-
-    apply from: rootProject.file("gradle/${platform}.gradle")
 
     sourceSets {
         main {

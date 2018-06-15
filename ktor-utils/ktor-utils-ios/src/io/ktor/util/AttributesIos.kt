@@ -1,11 +1,9 @@
 package io.ktor.util
 
-import java.util.concurrent.*
+actual fun Attributes(): Attributes = AttributesIos()
 
-actual fun Attributes(): Attributes = AttributesJvm()
-
-class AttributesJvm : Attributes {
-    private val map = ConcurrentHashMap<AttributeKey<*>, Any?>()
+class AttributesIos : Attributes {
+    private val map = mutableMapOf<AttributeKey<*>, Any?>()
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : Any> getOrNull(key: AttributeKey<T>): T? = map[key] as T?
@@ -21,8 +19,10 @@ class AttributesJvm : Attributes {
     }
 
     @Suppress("UNCHECKED_CAST")
-    override fun <T : Any> computeIfAbsent(key: AttributeKey<T>, block: () -> T): T =
-        map.computeIfAbsent(key) { block() } as T
+    override fun <T : Any> computeIfAbsent(key: AttributeKey<T>, block: () -> T): T {
+        map[key]?.let { return it as T }
+        return map.put(key, block()) as T
+    }
 
     override val allKeys: List<AttributeKey<*>>
         get() = map.keys.toList()

@@ -1,21 +1,17 @@
 package io.ktor.compat
 
-import kotlinx.io.core.*
+import kotlinx.io.charsets.*
 
-actual fun Char.isLowerCase(): Boolean {
-    fail()
-}
+actual fun Char.isLowerCase(): Boolean = true
 
 actual fun String.toCharArray(): CharArray {
-    fail()
+    TODO()
 }
 
 actual fun encodeBase64(string: String, charset: Charset): String {
-    fail()
+    TODO()
 }
 
 actual fun decodeBase64(string: String, charset: Charset): String {
-    fail()
+    TODO()
 }
-
-internal fun fail(): Nothing = throw Throwable()

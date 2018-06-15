@@ -1,6 +1,11 @@
-
 apply plugin: 'konan'
 
+konan.targets = ['ios_x64', 'ios_arm64']
+
+repositories {
+    maven { url = 'https://dl.bintray.com/e5l/kotlinx-io-test' }
+
+}
 //afterEvaluate {
 //    apply from: rootProject.file('gradle/publish.gradle')
 //}
@@ -9,10 +14,3 @@ apply plugin: 'konan'
 //
 //
 //task test(dependsOn: run)
-
-
-repositories {
-    maven {
-        url = 'https://dl.bintray.com/e5l/http-client-common'
-    }
-}
